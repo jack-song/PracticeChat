@@ -51,7 +51,7 @@ var textoutlet = React.createClass({
       type: SendIntentAndroid.TEXT_PLAIN
     });
 
-    this._GiftedMessenger.setMessageStatus('Send attempted', rowID);
+    this._GiftedMessenger.setMessageStatus('Sent...?', rowID);
   },
   render: function() {
     return (
@@ -65,6 +65,8 @@ var textoutlet = React.createClass({
           maxHeight={Dimensions.get('window').height - 50 - 50} // 50 for the navBar
           inverted={false}
           onErrorButtonPress={this.onErrorButtonPress}
+          onImagePress={this.onImagePress}
+          senderImage={require('./static/delete.png')}
 
           styles={{
             bubbleLeft: {
@@ -74,7 +76,7 @@ var textoutlet = React.createClass({
             bubbleRight: {
               backgroundColor: '#007aff',
               marginLeft: 70,
-            },
+            }
           }}
         />
       </View>
