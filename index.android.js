@@ -61,9 +61,11 @@ var textoutlet = React.createClass({
   onErrorButtonPress: function (message, rowID) {
     SendIntentAndroid.sendText({
       title: 'Are you sure?',
-      text: 'message',
+      text: message.text,
       type: SendIntentAndroid.TEXT_PLAIN
     });
+
+    this._GiftedMessenger.setMessageStatus('Send attempted', rowID);
   },
   render: function() {
     return (
