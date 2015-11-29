@@ -19,6 +19,9 @@ var ReceiverInput = React.createClass({
   getInitialState: function() {
     return {name: 'Luke Skywalker'};
   },
+  clear: function() {
+    this.setState({name: ''});
+  },
   render: function() {
     return(
       <TextInput
@@ -26,6 +29,7 @@ var ReceiverInput = React.createClass({
         value={this.state.name}
         onChangeText={(text) => this.setState({name: text})}
         autoCorrect={false}
+        onFocus={this.clear}
         textAlign='center'
       />
     );
