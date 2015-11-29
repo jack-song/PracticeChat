@@ -18,7 +18,7 @@ var {
 
 var ReceiverInput = React.createClass({
   getInitialState: function() {
-    return {name: 'Luke Skywalker'};
+    return {name: ''};
   },
   clear: function() {
     this.setState({name: ''});
