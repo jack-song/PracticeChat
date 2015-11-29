@@ -38,25 +38,11 @@ var ReceiverInput = React.createClass({
 })
 
 var textoutlet = React.createClass({
-  getInitialMessages: function() {
-    return [
-      {text: 'What\'s on your mind?', name: 'TextOutlet', image: null, position: 'left', date: new Date(2015, 0, 16, 19, 0)}
-    ];
-  },
   handleSend: function(message = {}, rowID = null) {
     this._GiftedMessenger.setMessageStatus('ErrorButton', rowID);
   },
   onImagePress: function(rowData = {}, rowID = null){
     console.log('stuff');
-  },
-  handleReceive: function() {
-    this._GiftedMessenger.appendMessage({
-      text: 'Received message', 
-      name: 'Friend', 
-      image: {uri: 'https://facebook.github.io/react/img/logo_og.png'}, 
-      position: 'left', 
-      date: new Date(),
-    });
   },
   onErrorButtonPress: function (message, rowID) {
     SendIntentAndroid.sendText({
@@ -75,7 +61,6 @@ var textoutlet = React.createClass({
         <GiftedMessenger
           ref={(c) => this._GiftedMessenger = c}
 
-          initialMessages={this.getInitialMessages()}
           handleSend={this.handleSend}
           maxHeight={Dimensions.get('window').height - 50 - 50} // 50 for the navBar
           inverted={false}
