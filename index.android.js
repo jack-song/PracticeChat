@@ -5,6 +5,7 @@
 'use strict';
 
 var GiftedMessenger = require('react-native-gifted-messenger');
+var SendIntentAndroid = require('react-native-send-intent');
 var React = require('react-native');
 var {
   AppRegistry,
@@ -57,6 +58,13 @@ var textoutlet = React.createClass({
       date: new Date(),
     });
   },
+  onErrorButtonPress: function (message, rowID) {
+    SendIntentAndroid.sendText({
+      title: 'Are you sure?',
+      text: 'message',
+      type: SendIntentAndroid.TEXT_PLAIN
+    });
+  },
   render: function() {
     return (
       <View style={{backgroundColor: 'gray'}}>
@@ -69,6 +77,7 @@ var textoutlet = React.createClass({
           handleSend={this.handleSend}
           maxHeight={Dimensions.get('window').height - 50 - 50} // 50 for the navBar
           inverted={false}
+          onErrorButtonPress={this.onErrorButtonPress}
 
           styles={{
             bubbleLeft: {
