@@ -67,7 +67,7 @@ var textoutlet = React.createClass({
           inverted={false}
           onErrorButtonPress={this.onErrorButtonPress}
           onImagePress={this.onImagePress}
-          senderImage={require('./static/delete.png')}
+          senderImage={require('image!delete')}
 
           styles={{
             bubbleLeft: {
