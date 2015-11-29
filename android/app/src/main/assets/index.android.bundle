@@ -924,6 +924,7 @@ style:{height:50,borderColor:'white',borderWidth:1},
 value:this.state.name,
 onChangeText:function(text){return _this.setState({name:text});},
 autoCorrect:false,
+autoFocus:true,
 onFocus:this.clear,
 textAlign:'center'}));}});
 
@@ -950,7 +951,7 @@ this._GiftedMessenger.setMessageStatus('Sent...?',rowID);},
 
 render:function(){var _this2=this;
 return (
-React.createElement(View,{style:{backgroundColor:'gray'}},
+React.createElement(View,{style:{backgroundColor:'#DADEE3'}},
 React.createElement(ReceiverInput,null),
 
 React.createElement(GiftedMessenger,{
@@ -962,6 +963,7 @@ inverted:false,
 onErrorButtonPress:this.onErrorButtonPress,
 onImagePress:this.onImagePress,
 senderImage:require('image!delete'),
+autoFocus:false,
 
 styles:{
 bubbleLeft:{
