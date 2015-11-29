@@ -30,6 +30,7 @@ var ReceiverInput = React.createClass({
         value={this.state.name}
         onChangeText={(text) => this.setState({name: text})}
         autoCorrect={false}
+        autoFocus={true}
         onFocus={this.clear}
         textAlign='center'
       />
@@ -56,7 +57,7 @@ var textoutlet = React.createClass({
   },
   render: function() {
     return (
-      <View style={{backgroundColor: 'gray'}}>
+      <View style={{backgroundColor: '#DADEE3'}}>
         <ReceiverInput/>
 
         <GiftedMessenger
@@ -68,6 +69,7 @@ var textoutlet = React.createClass({
           onErrorButtonPress={this.onErrorButtonPress}
           onImagePress={this.onImagePress}
           senderImage={require('image!delete')}
+          autoFocus={false}
 
           styles={{
             bubbleLeft: {

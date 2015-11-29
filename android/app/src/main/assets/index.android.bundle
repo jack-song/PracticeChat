@@ -912,7 +912,7 @@ React.AppRegistry;var StyleSheet=React.StyleSheet;var Text=React.Text;var View=R
 
 var ReceiverInput=React.createClass({displayName:'ReceiverInput',
 getInitialState:function(){
-return {name:'Luke Skywalker'};},
+return {name:''};},
 
 clear:function(){
 this.setState({name:''});},
