@@ -43,7 +43,7 @@ var textoutlet = React.createClass({
     ];
   },
   handleSend: function(message = {}, rowID = null) {
-    console.log('stuffyy');
+    this._GiftedMessenger.setMessageStatus('ErrorButton', rowID);
   },
   onImagePress: function(rowData = {}, rowID = null){
     console.log('stuff');
@@ -68,6 +68,7 @@ var textoutlet = React.createClass({
           initialMessages={this.getInitialMessages()}
           handleSend={this.handleSend}
           maxHeight={Dimensions.get('window').height - 50 - 50} // 50 for the navBar
+          inverted={false}
 
           styles={{
             bubbleLeft: {
