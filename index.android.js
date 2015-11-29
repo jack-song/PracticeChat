@@ -11,22 +11,40 @@ var {
   StyleSheet,
   Text,
   View,
-  Dimensions
+  Dimensions,
+  TextInput
 } = React;
 
+var ReceiverInput = React.createClass({
+  getInitialState: function() {
+    return {name: 'Luke Skywalker'};
+  },
+  render: function() {
+    return(
+      <TextInput
+        style={{height: 50, borderColor: 'white', borderWidth: 1}}
+        value={this.state.name}
+        onChangeText={(text) => this.setState({name: text})}
+        autoCorrect={false}
+        textAlign='center'
+      />
+    );
+  }
+})
+
 var textoutlet = React.createClass({
-  getInitialMessages() {
+  getInitialMessages: function() {
     return [
       {text: 'What\'s on your mind?', name: 'TextOutlet', image: null, position: 'left', date: new Date(2015, 0, 16, 19, 0)}
     ];
   },
-  handleSend(message = {}, rowID = null) {
+  handleSend: function(message = {}, rowID = null) {
     console.log('stuffyy');
   },
-  onImagePress(rowData = {}, rowID = null){
+  onImagePress: function(rowData = {}, rowID = null){
     console.log('stuff');
   },
-  handleReceive() {
+  handleReceive: function() {
     this._GiftedMessenger.appendMessage({
       text: 'Received message', 
       name: 'Friend', 
@@ -35,26 +53,30 @@ var textoutlet = React.createClass({
       date: new Date(),
     });
   },
-  render() {
+  render: function() {
     return (
-      <GiftedMessenger
-        ref={(c) => this._GiftedMessenger = c}
+      <View style={{backgroundColor: 'gray'}}>
+        <ReceiverInput/>
 
-        initialMessages={this.getInitialMessages()}
-        handleSend={this.handleSend}
-        maxHeight={Dimensions.get('window').height - 64} // 64 for the navBar
+        <GiftedMessenger
+          ref={(c) => this._GiftedMessenger = c}
 
-        styles={{
-          bubbleLeft: {
-            backgroundColor: '#e6e6eb',
-            marginRight: 70,
-          },
-          bubbleRight: {
-            backgroundColor: '#007aff',
-            marginLeft: 70,
-          },
-        }}
-      />
+          initialMessages={this.getInitialMessages()}
+          handleSend={this.handleSend}
+          maxHeight={Dimensions.get('window').height - 50 - 50} // 50 for the navBar
+
+          styles={{
+            bubbleLeft: {
+              backgroundColor: '#e6e6eb',
+              marginRight: 70,
+            },
+            bubbleRight: {
+              backgroundColor: '#007aff',
+              marginLeft: 70,
+            },
+          }}
+        />
+      </View>
     );
   }
 });
