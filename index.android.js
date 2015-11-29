@@ -4,7 +4,7 @@
  */
 'use strict';
 
-var GiftedMessenger = require('react-native-gifted-messenger');
+var GiftedMessenger = require('./GiftedMessenger.js');
 var SendIntentAndroid = require('react-native-send-intent');
 var React = require('react-native');
 var {
@@ -42,7 +42,8 @@ var textoutlet = React.createClass({
     this._GiftedMessenger.setMessageStatus('ErrorButton', rowID);
   },
   onImagePress: function(rowData = {}, rowID = null){
-    console.log('stuff');
+    console.log('try to delete ' + rowID);
+    this._GiftedMessenger.deleteMessage(rowID);
   },
   onErrorButtonPress: function (message, rowID) {
     SendIntentAndroid.sendText({
