@@ -43,7 +43,6 @@ var textoutlet = React.createClass({
     this._GiftedMessenger.setMessageStatus('ErrorButton', rowID);
   },
   onImagePress: function(rowData = {}, rowID = null){
-    console.log('try to delete ' + rowID);
     this._GiftedMessenger.deleteMessage(rowID);
   },
   onErrorButtonPress: function (message, rowID) {

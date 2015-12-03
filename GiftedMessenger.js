@@ -428,7 +428,7 @@ var GiftedMessenger = React.createClass({
   },
 
   deleteMessage(rowID = null) {
-    //avoid trouble
+    // to avoid trouble, better safe than sorry
     // Array Remove - By John Resig (MIT Licensed)
     Array.prototype.remove = function(from, to) {
       var rest = this.slice((to || from) + 1 || this.length);
@@ -437,18 +437,15 @@ var GiftedMessenger = React.createClass({
     };
 
     if(rowID != null){
-      //remove message in new copy
-      var newData = this._data;
-      newData.remove(rowID);
+      //remove message from messages
+      this._data.remove(rowID);
 
-      //reset messages
-      this._rowIds = [];
-      this._data = [];
+      //row IDs are just # of messages... 3, 2, 1 so:
+      this._rowIds.shift();
 
-      //re-add messages properly
-      if(newData){
-        this.appendMessages(newData);
-      }
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(this._data, this._rowIds)
+      });
     }
   },
 
@@ -675,7 +672,7 @@ var GiftedMessenger = React.createClass({
         backgroundColor: '#007aff',
       },
       bubbleError: {
-        backgroundColor: '#e01717'
+        backgroundColor: '#6d6d6d'
       },
       link: {
         color: '#007aff',

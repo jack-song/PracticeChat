@@ -1164,7 +1164,6 @@ return null;},
 
 
 renderImage:function(){var _this=this;var rowData=arguments.length <= 0 || arguments[0] === undefined?{}:arguments[0];var rowID=arguments.length <= 1 || arguments[1] === undefined?null:arguments[1];
-console.log('render for ' + rowID);
 if(rowData.image !== null){
 
 var diffMessage=null;
@@ -1257,7 +1256,6 @@ rowData.text));},
 
 
 renderRow:function(){var rowData=arguments.length <= 0 || arguments[0] === undefined?{}:arguments[0];var sectionID=arguments.length <= 1 || arguments[1] === undefined?null:arguments[1];var rowID=arguments.length <= 2 || arguments[2] === undefined?null:arguments[2];
-console.log('row render for ' + rowID);
 return (
 React.createElement(View,null,
 this.renderDate(rowData,rowID),
@@ -1401,8 +1399,7 @@ var rowID=null;
 for(var i=0;i < messages.length;i++) {
 this._data.push(messages[i]);
 this._rowIds.unshift(this._data.length - 1);
-rowID = this._data.length - 1;
-console.log('added ' + rowID);}
+rowID = this._data.length - 1;}
 
 this.setState({
 dataSource:this.state.dataSource.cloneWithRows(this._data,this._rowIds)});
@@ -1417,17 +1414,25 @@ return rowID;},
 
 deleteMessage:function(){var rowID=arguments.length <= 0 || arguments[0] === undefined?null:arguments[0];
 
-var id_index=this._rowIds.indexOf(rowID);
-console.log('found ' + rowID + ' at ' + id_index + ' out of ' + this._rowIds.length);
 
-if(id_index !== -1){
-
-this._rowIds.splice(id_index,1);
-this._data.splice(this._data.length - id_index,1);
+Array.prototype.remove = function(from,to){
+var rest=this.slice((to || from) + 1 || this.length);
+this.length = from < 0?this.length + from:from;
+return this.push.apply(this,rest);};
 
 
-this.setState({
-dataSource:this.state.dataSource.cloneWithRows(this._data,this._rowIds)});}},
+if(rowID != null){
+
+var newData=this._data;
+newData.remove(rowID);
+
+
+this._rowIds = [];
+this._data = [];
+
+
+if(newData){
+this.appendMessages(newData);}}},
 
 
 
@@ -1655,7 +1660,7 @@ marginLeft:70,
 backgroundColor:'#007aff'},
 
 bubbleError:{
-backgroundColor:'#e01717'},
+backgroundColor:'#6d6d6d'},
 
 link:{
 color:'#007aff',
@@ -59577,7 +59582,7 @@ RNSendIntentAndroid.sendPhoneDial(phoneNumber);}};
 
 module.exports = SendIntentAndroid;
 });
-__d('image!delete',function(global, require, module, exports) {  module.exports = {"__packager_asset":true,"path":"/Users/jiapeisong/Documents/per/textoutlet/android/app/build/intermediates/res/merged/debug/drawable-hdpi/delete.png","uri":"delete","width":640,"height":586,"deprecated":true};
+__d('image!delete',function(global, require, module, exports) {  module.exports = {"__packager_asset":true,"path":"/Users/jiapeisong/Documents/per/textoutlet/android/app/src/main/res/drawable-hdpi/delete.png","uri":"delete","width":640,"height":586,"deprecated":true};
 });
 ;require("InitializeJavaScriptAppEngine");
 ;require("textoutlet/index.android.js");
